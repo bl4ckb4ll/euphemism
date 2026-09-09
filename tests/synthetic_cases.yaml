@@ -1,0 +1,74 @@
+# Synthetic cases only. These are behavioral tests, not historical evidence.
+
+- id: education_unfortunate_positive
+  kind: positive
+  passage: "We should extend education to these unfortunate children so that they may become useful members of society."
+  context: "The preceding paragraph says their families have little property and that the children are expected to earn wages when old enough to work."
+  must_recover:
+    - "the children come from families with little property"
+    - "the children are expected to need paid work"
+  may_flag:
+    - "unfortunate"
+    - "useful members of society"
+  must_not_claim:
+    - "the speaker deliberately lied"
+    - "the speaker intended exploitation"
+
+- id: degree_earnings_category_not_cause
+  kind: causal_overreach
+  passage: "Workers with bachelor's degrees earn more on average than workers whose formal education ended with high school."
+  context: "No experiment, adjustment, or causal estimate is supplied."
+  must_recover:
+    - "the sentence reports an association between categories"
+    - "the sentence alone does not establish that obtaining the degree caused the earnings difference"
+  must_not_claim:
+    - "college has no causal effect"
+    - "the difference is entirely caused by family wealth"
+
+- id: bus_underserved_counterexample
+  kind: counterexample
+  passage: "The north side is underserved by the bus network."
+  context: "The next sentence states that it receives one bus every 90 minutes while the other three districts receive one every 15 minutes."
+  expected_disposition: "no class-coded euphemistic translation required"
+  must_recover:
+    - "bus service is substantially less frequent on the north side"
+  must_not_claim:
+    - "the residents are poor"
+    - "the wording hides wage dependence"
+
+- id: wealthy_unfortunate_counterexample
+  kind: counterexample
+  passage: "The unfortunate heir had to sell one of the family's three vacation houses."
+  context: "The passage gives no loss of ordinary subsistence, employment dependence, or inability to meet basic expenses."
+  expected_disposition: "do not translate unfortunate into poor or working class"
+  must_not_claim:
+    - "the heir must work for wages"
+    - "the heir lacks wealth"
+
+- id: explicit_material_relation
+  kind: no_translation_needed
+  passage: "These children come from families without enough income or property to support them into adulthood, so most will have to earn wages."
+  context: "The material relation is already stated directly."
+  expected_disposition: "little or no euphemistic translation needed"
+  must_recover:
+    - "the passage explicitly states economic dependence on future paid work"
+
+- id: opportunity_ambiguous
+  kind: ambiguous
+  passage: "The school gives students an opportunity to study Latin."
+  context: "Nothing else is said about admissions, cost, employment, status, or promised outcomes."
+  expected_disposition: "insufficient evidence for a stronger social translation"
+  must_not_claim:
+    - "opportunity means a false promise of mobility"
+    - "the school is disguising exploitation"
+
+- id: elite_status_anxiety
+  kind: distribution_shift
+  passage: "The family feared that accepting salaried work would represent a decline in position."
+  context: "They retain substantial assets but can no longer live entirely from investment income."
+  must_recover:
+    - "the passage concerns status anxiety and a change in relation to paid work"
+    - "the family still has substantial assets"
+  must_not_claim:
+    - "the family is destitute"
+    - "only poor people can experience dependence on wages"
